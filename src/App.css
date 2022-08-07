@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 900px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url('https://wallpapercave.com/wp/EmxBTRq.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 2;
+    z-index: -2;
+    /* background-color: rgb(0, 18, 41);  */
+}
+
+.App {
+    width: 100%;
+    height: 900px !important;
+    text-align: center;
+}
+
+
+/* Header */
+
+.navbar-brand {
+    color: teal !important;
+}
+
+.navbarContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0, 18, 41) !important;
+    width: 100% !important;
+}
+
+.nav__Content {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-content: flex-end !important;
+}
+
+nav,
+a:hover {
+    color: #014b7c !important;
+}
+
+.contact_button {
+    color: rgb(233, 223, 223);
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.contact_button:hover {
+    border: none;
+    box-shadow: 0 0 20px #dfa803;
+}
+
+.fa-shopping-cart {
+    color: #ffc107;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+/*Add card example!!*/
+
+.card-container {
+    display: inline-block;
+    background-color: var(--card-Very-dark-blue);
+    width: min(87.5%, 22rem);
+    margin: 15px;
+    padding: 1.4rem;
+    border-radius: 5%;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 50%);
+    z-index: 2;
+}
+
+.image-header:hover .overlay+.view {
+    display: block;
+}
+
+.image-header {
+    position: relative;
+    /* max-width: 100%;
+    height: 100%; */
+}
+
+.image-main {
+    position: relative;
+    max-width: 100%;
+    height: 300px;
+    cursor: pointer;
+    border-radius: 5%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    height: 98%;
+    width: 100%;
+    opacity: 0;
+    background-color: var(--primary-Cyan);
+    border-radius: 5%;
+}
+
+.view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.image-header:hover .overlay {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.tittle-card {
+    font-size: 1.3rem;
+    color: var(--neutral-White);
+    font-weight: 600;
+    cursor: pointer;
+    margin: 1.1rem 0 .7rem 0;
+}
+
+.tittle-card:hover {
+    color: var(--primary-Cyan);
+}
+
+.text-card {
+    font-size: var(--Font-paragraph-size);
+    color: var(--primary-Soft-blue);
+    font-weight: 300;
+    margin: .7rem 0;
+}
+
+.items-card {
+    margin: .7rem 0 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.img-item {
+    height: 1.3rem;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.eth {
+    color: var(--primary-Cyan);
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.days {
+    color: var(--primary-Soft-blue);
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+.creator-section {
+    color: var(--primary-Soft-blue);
+    display: flex;
+    flex-direction: row;
+    padding: .7rem 0 0 0;
+    align-items: center;
+    border-top: 2px solid var(--line-Very-dark-blue);
+}
+
+.img-creator {
+    height: 2.5rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.text-creator {
+    color: var(--primary-Soft-blue);
+    font-weight: 400;
+    margin: 0 1rem;
+    vertical-align: middle;
+}
+
+.name-creator {
+    text-decoration: none;
+    font-weight: 400;
+    margin: 0 .1rem;
+    color: var(--neutral-White);
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.name-creator:hover {
+    color: var(--primary-Cyan);
+}
+
+.boton {
+    width: 300px !important;
+    height: auto !important;
+    margin-top: 5px;
+    padding-top: 1px !important;
+}
+
+
+/* boton card */
+
+.contador__button {
+    display: inline-block
+}
+
+
+/* Footer*/
+
+.footerContent {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    background: rgb(0, 18, 41);
+    height: 5vh;
+    width: 100%;
+}
+
+
+/* addtocard content*/
+
+.boton2 {
+    background-color: black;
+}
+
+.count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.count__content {
+    font-size: 2em;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.count__button {
+    border-radius: 6px;
+    width: 3rem;
+    height: 2rem;
+}
+
+.add__button {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+    overflow: hidden;
+}
+
+.add__button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+}
+
+.add__button:hover {
+    color: #e8e8e8;
+    cursor: pointer;
+}
+
+.add__button:hover::before {
+    width: 100%;
+}
