@@ -5,11 +5,13 @@ import ItemDetailContainer from "./components/ItemListContainer/ItemDetailContai
 import TestEvents from "./components/TestEvents"
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartProvider from "./components/Context/CartContext";
 
 
 function App() {
   return (
     <div className="App">
+      <CartProvider>
       <BrowserRouter>
         <header>
           <NavbarContent />
@@ -24,6 +26,7 @@ function App() {
         </main>
         <Footer />
       </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }
