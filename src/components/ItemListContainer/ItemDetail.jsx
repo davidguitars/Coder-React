@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../Context/CartContext";
 import ItemCount from "../ItemCount";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ItemDetail = ({ products }) => {
-  const notify = () => {
-    toast.success("Producto agregado correctamente!", {
-      pauseOnHover: false,
-      autoClose: 3000,
-      hideProgressBar: true,
-    });
-  };
-  // const { addToCart} 
-  const [cant, setCant] = useState(0);
+export const ItemDetail = ({ products }) => {
+  const [goToCart, setGoToCart] = useState(false);
+  const { addToCart } = useCartContext();
 
-  const onAdd = (cant) => {
-    setCant(cant);
-    addToCart(item, cant);
-    notify();
+  const onAdd = (quantity) => {
+    setGoToCart(true);
+    addToCart(products, quantity);
   };
 
   return (
@@ -30,12 +22,11 @@ const ItemDetail = ({ products }) => {
         <h3>Descripcion:{products.description}</h3>
         <span>stock:{products.stock}</span>
         <div className="boton btn btn-warning">
-        {
-                    cant === 0 ? 
-                    <ItemCount stock={products.stock} initial={1} onAdd={onAdd} /> 
-                    :
-                    <><ToastContainer/> <Link to={"/cart"}>Ir al carrito</Link></>
-                }
+          {goToCart ? (
+            <Link to="/cart">terminar Compra</Link>
+          ) : (
+            <ItemCount initial={1} stock={products.stock} onAdd={onAdd} />
+          )}
         </div>
       </header>
     </div>
