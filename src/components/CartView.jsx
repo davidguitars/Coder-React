@@ -2,13 +2,17 @@ import { useCartContext } from "../components/Context/CartContext";
 import React from "react";
 
 const CartView = () => {
-const { cart, totalProducts, clearCart } = useContext(CartContext);
+const { cart, totalProducts, clearCart } = useCartContext();
+
+const clearAll = () => {
+  clearCart();
+};
 
   if (cart.length === 0) {
     return <h1>No hay articulos en el carrito!</h1>;
   }
 
-  const { removeProduct } = useCartContext;
+
   return (
     <>
     <div className="cart-container">
@@ -32,7 +36,7 @@ const { cart, totalProducts, clearCart } = useContext(CartContext);
     <div className="cart-footer">
       <div>
         <p>Total: ${totalProducts()}</p>
-        <button onClick={clearCart} className="btn btn-danger">
+        <button onClick={clearAll} className="btn btn-danger">
           Vaciar carrito
         </button>
       </div>
