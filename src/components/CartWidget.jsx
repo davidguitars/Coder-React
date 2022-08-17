@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
         <div>
             <Link to={"/cart"}>
             <i className="fa fa-shopping-cart"></i> 
-            <span>{totalProducts() || ''}</span>
+            <span className='countCart'>{totalProducts() || ''}</span>
             </Link>
            
         </div>

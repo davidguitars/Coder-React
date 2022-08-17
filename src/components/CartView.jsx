@@ -20,7 +20,10 @@ const clearAll = () => {
         <div key={item.id}>
           <div className="item__card card-in-cart">
             <div className="item__description card-in-cart-description ">
-              <h5 className="name">{item.name}</h5>
+            <div className='img__cart'> 
+            <img className='img__cart' src={item.image} alt={item.title}></img>
+            </div>
+              <h5 className="name">{item.title}</h5>
               <h2 className="price">${item.price}</h2>
               <ion-icon
                 name="trash-outline"

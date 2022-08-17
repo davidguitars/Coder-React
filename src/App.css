@@ -294,3 +294,23 @@ a:hover {
 .add__button:hover::before {
     width: 100%;
 }
+
+
+/* contador del carrito */
+
+.countCart,
+a {
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* imagen y estilos de finalizar compra */
+
+.img__cart {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100px;
+}

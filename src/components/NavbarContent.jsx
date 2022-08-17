@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import CartWidget from './CartWidget'
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,7 +17,9 @@ const NavbarContent = () => {
    <Navbar className="navbarContent" bg="light" expand="lg">
       <Container >
         <div className="logo">
-         <Navbar.Brand href="/">Crypto card</Navbar.Brand>
+          <Link to='/'> 
+         <Navbar.Brand as="p">Crypto card</Navbar.Brand>
+         </Link>
         </div>
        
         <Navbar.Toggle aria-controls="navbarScroll" />
