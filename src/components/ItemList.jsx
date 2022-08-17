@@ -1,10 +1,10 @@
 import React from "react";
 import Item from "./Item";
 
-const ItemList = ({ products }) => {
+const ItemList = ({ data }) => {
   return (
     <div>
-      {products.map((producto) => (
+      {data.map((producto) => (
         <Item
           key={producto.id}
           image={producto.image}
