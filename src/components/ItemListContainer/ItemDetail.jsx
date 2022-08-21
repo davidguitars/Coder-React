@@ -23,7 +23,7 @@ export const ItemDetail = ({ data }) => {
         <span>stock:{data.stock}</span>
         <div className="boton btn btn-warning">
           {goToCart ? (
-            <Link to="/cart">terminar Compra</Link>
+           <button className="boton2 btn btn-secondary"> <Link to="/cart"> Ir al Checkout</Link></button>
           ) : (
             <ItemCount initial={1} stock={data.stock} onAdd={onAdd} />
           )}
