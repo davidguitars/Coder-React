@@ -12,8 +12,7 @@ export default function ItemDetailContainer  ()  {
    useEffect(() => {
    const  querydb = getFirestore()
    const queryDoc = doc(querydb, 'products', itemId)
-   getDoc(queryDoc)
-   .then(res => setData({id: res.data, ...res.data() }))
+   getDoc(queryDoc).then((res) => setData({id: res.id, ...res.data() }))
     
    }, [itemId]);
 

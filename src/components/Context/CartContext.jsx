@@ -1,20 +1,34 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
  const CartContext = React.createContext([])
 
 export const useCartContext = () => useContext(CartContext) 
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [count, setCount] = useState(0)
 
- const addToCart = (item, quantity) => {
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('cart'))) {
+      setCart(JSON.parse(localStorage.getItem('cart')))
+       setCount((JSON.parse(localStorage.getItem('cart'))))
+    }
+  }, [])
+
+
+  const addToCart = (item, quantity) => {
     if (isInCart(item.id)){
         setCart(cart.map(products => {
             return products.id === item.id ? {...products, quantity: products.quantity + quantity} : products
         }));
+        localStorage.setItem('cart', JSON.stringify(cart))
+        setCount(cart)
 
     }else {
-        setCart([...cart, {...item, quantity}]);
-    }
+         setCart([...cart, {...item, quantity}]);
+     }
+     localStorage.setItem('cart', JSON.stringify(cart))
+     setCount(cart)
  }
 
  const totalPrice = () => {
@@ -24,12 +38,19 @@ const CartProvider = ({ children }) => {
  const totalProducts = () => cart.reduce((acumulador, productoActual) => acumulador + productoActual.quantity, 0);
 
   const clearCart = () => setCart([]);
+  localStorage.setItem('cart', JSON.stringify([]))
 
-  const isInCart = (id) =>
+
+ const isInCart = (id) =>
     cart.find((products) => products.id === id) ? true : false;
 
-  const removeProduct = (id) =>
-    setCart(cart.filter((products) => products.id !== id));
+  const deleteItem = (id) => {
+    const products = cart.filter(prod => prod.id !== id)
+    setCart(products)
+    localStorage.setItem('cart', JSON.stringify(products))
+    setCount(cartLenght(products))
+}
+
 
   return (
     <CartContext.Provider
@@ -37,7 +58,7 @@ const CartProvider = ({ children }) => {
       
         clearCart,
         isInCart,
-        removeProduct,
+        deleteItem,
         addToCart,
         totalPrice,
         totalProducts,
