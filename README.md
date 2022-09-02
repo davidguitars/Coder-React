@@ -1,6 +1,6 @@
 # Proyecto React Coderhouse
 
-## Link  del proyecto 
+## Link  del proyecto
 ## Detalles del proyecto
 
 
