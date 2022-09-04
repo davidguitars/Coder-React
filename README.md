@@ -6,12 +6,12 @@ https://crypto-coder-react.netlify.app/
 ## Detalles del proyecto
 
 
-Es una tienda de artículos de NFTS Basado en un juego de mi infancia RuneScape
+## Es una tienda de artículos de NFTS Basado en un juego de mi infancia RuneScape
 
 
 ## Description
 
-### I have made this proyect for the CoderHouse React js course, it's about an Ecommerce where the main product are high quality speakers.
+
 
 ### The project uses the best practices for software development, using hooks and database to give a more real and professional experience.
 
