@@ -1,6 +1,7 @@
 import { addDoc, getFirestore, collection } from "firebase/firestore";
 import { useCartContext } from "../components/Context/CartContext";
-import Swal from 'sweetalert2'
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const CartView = () => {
   const { cart, totalProducts, clearCart, deleteItem } = useCartContext();
@@ -19,10 +20,18 @@ const CartView = () => {
     total: "20",
   };
 
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+
+  const regexEmail =
+    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  const regexPhone = /^[0-9]+$/;
+
   let order;
   const orderFunction = () => {
     cart.map((item) => {
-      console.log(item);
       order = {
         buyers: {
           name: document.getElementById("Name").value,
@@ -45,7 +54,6 @@ const CartView = () => {
 
   const terminarCompra = () => {
     cart.map((item) => {
-      console.log(item);
       order = {
         buyers: {
           name: document.getElementById("Name").value,
@@ -59,30 +67,57 @@ const CartView = () => {
         },
         total: totalProducts(),
       };
+      //Doesn't admit empty entries
+      if (Email === "" || phone === "" || Name === "" || Email === "") {
+        Swal.fire({
+          title: "Error!",
+          text: "Please fill all fields",
+          icon: "error",
+          confirmButtonText: "Continue",
+        });
+        return;
+      }
+
+      //Phone number validation
+      if (phone !== "" && !regexPhone.test(phone)) {
+        Swal.fire({
+          title: "Error!",
+          text: "Please enter a valid phone number",
+          icon: "error",
+          confirmButtonText: "Continue",
+        });
+        return;
+      }
+
+      //Wrong email adress validation
+      if (email !== "" && !regexEmail.test(email)) {
+        Swal.fire({
+          title: "Error!",
+          text: "Please enter a valid email address",
+          icon: "error",
+          confirmButtonText: "Continue",
+        });
+        return;
+      }
+
       Swal.fire(
-        'Hemos Recibido tu compra!',
-        'Un ejecutivo te contactara!',
-        'success'
-      )
-      setTimeout(() => location.href = "/", 1000);
+        "Hemos Recibido tu compra!",
+        "Un ejecutivo te contactara!",
+        "success"
+      );
+      setTimeout(() => (location.href = "/"), 1000);
     });
+
     const db = getFirestore();
     const ordersCollection = collection(db, "orders");
     console.log(order, "soy la linea 57");
     if (order) {
       addDoc(ordersCollection, order)
-        .then(() => {
-          console.log("paso");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        .then(() => {})
+        .catch((error) => {});
       return;
     }
-  
   };
-
-
 
   if (cart.length === 0) {
     return <h1>No hay articulos en el carrito!</h1>;
@@ -101,7 +136,10 @@ const CartView = () => {
                 <h5 className="name">{item.title}</h5>
                 <h2 className="price">${item.price}</h2>
                 <div>
-                <ion-icon name="trash-outline" onClick={() => deleteItem(item.id)}></ion-icon>
+                  <ion-icon
+                    name="trash-outline"
+                    onClick={() => deleteItem(item.id)}
+                  ></ion-icon>
                 </div>
                 <p>Subtotal : {item.price * item.quantity}</p>
                 <p>Cantidad: {item.quantity}</p>
@@ -120,19 +158,37 @@ const CartView = () => {
             <form className="body__formulario">
               <label>
                 Name:
-                <input type="text" name="Name" id="Name" />
+                <input
+                  type="text"
+                  name="Name"
+                  id="Name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
                 <br />
                 Email:
-                <input type="text" name="Email" id="Email" />
+                <input
+                  type="text"
+                  name="Email"
+                  id="Email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
                 <br />
                 Phone:
-                <input type="phone" name="phone" id="Phone" />
+                <input
+                  type="phone"
+                  name="phone"
+                  id="Phone"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                />
                 <br />
               </label>
             </form>
           </div>
+
           <button
-            disabled={false}
             onClick={terminarCompra}
             className="boton_terminar btn btn-danger"
           >
@@ -143,9 +199,7 @@ const CartView = () => {
             Vaciar carrito
           </button>
         </div>
-        
       </div>
-     
     </>
   );
 };

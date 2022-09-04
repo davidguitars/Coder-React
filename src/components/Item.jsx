@@ -1,12 +1,9 @@
 import React from "react";
-import { memo } from 'react'
-import { Link } from 'react-router-dom'
+import { memo } from "react";
+import { Link } from "react-router-dom";
 
-
-
-const Item = ({image, title, price,id,stock }) => {
-
- const urlDetails = `./item/${id}`
+const Item = ({ image, title, price, id, stock }) => {
+  const urlDetails = `./item/${id}`;
 
   return (
     <div className="card-container">
@@ -15,16 +12,13 @@ const Item = ({image, title, price,id,stock }) => {
         <h1>{title}</h1>
         <h2 className="tittle-card">{id}</h2>
         <p className="eth">${price}</p>
-        <div>stock: {stock} </div> 
-       <Link to={urlDetails}> 
-          <button
-            className="boton btn btn-warning">
-            Ver Detalle
-          </button>
-         </Link>
+        <div>stock: {stock} </div>
+        <Link to={urlDetails}>
+          <button className="boton btn btn-warning">Ver Detalle</button>
+        </Link>
       </header>
     </div>
   );
 };
 
-export default  memo(Item);
+export default memo(Item);
